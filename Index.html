@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register - Learn Web Development</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="form-container">
+    <h1>Join Our Web Dev Learning Program</h1>
+    <form id="registrationForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required />
+
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" required />
+
+      <label>What are you interested in?</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="interests" value="Python" /> Python</label>
+        <label><input type="checkbox" name="interests" value="Django" /> Django</label>
+        <label><input type="checkbox" name="interests" value="HTML" /> HTML</label>
+        <label><input type="checkbox" name="interests" value="CSS" /> CSS</label>
+        <label><input type="checkbox" name="interests" value="JavaScript" /> JavaScript</label>
+      </div>
+
+      <button type="submit">Submit Registration</button>
+    </form>
+    <p id="msg"></p>
+  </div>
+
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const location = document.getElementById("location").value.trim();
+      const interests = Array.from(document.querySelectorAll("input[name='interests']:checked"))
+                            .map(el => el.value);
+
+      if (!name || !email || !phone || !location || interests.length === 0) {
+        document.getElementById("msg").innerText = "Please complete all fields.";
+        return;
+      }
+
+      const data = { name, email, phone, location, interests };
+
+      try {
+        const response = await fetch("YOUR_WEB_APP_URL", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: { "Content-Type": "application/json" }
+        });
+
+        const result = await response.json();
+
+        if (result.result === "success") {
+          document.getElementById("msg").innerText = "Registration successful!";
+          document.getElementById("registrationForm").reset();
+        } else {
+          document.getElementById("msg").innerText = "Error submitting form.";
+        }
+      } catch (err) {
+        document.getElementById("msg").innerText = "Connection error.";
+      }
+    });
+  </script>
+</body>
+  </html>
+  

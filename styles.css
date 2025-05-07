@@ -1,0 +1,85 @@
+/* Reset basic styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Container for the form */
+.form-container {
+  background-color: #ffffff;
+  padding: 30px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Heading */
+.form-container h1 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  text-align: center;
+  color: #333;
+}
+
+/* Labels and inputs */
+form label {
+  margin-top: 15px;
+  font-weight: bold;
+  display: block;
+  color: #555;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+/* Checkbox group */
+.checkbox-group {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Button styling */
+button[type="submit"] {
+  margin-top: 25px;
+  padding: 12px;
+  background-color: #0066cc;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #005bb5;
+}
+
+/* Message text */
+#msg {
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  color: green;
+  text-align: center;
+}
+  

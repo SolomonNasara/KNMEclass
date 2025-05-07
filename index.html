@@ -45,7 +45,7 @@
       const phone = document.getElementById("phone").value.trim();
       const location = document.getElementById("location").value.trim();
       const interests = Array.from(document.querySelectorAll("input[name='interests']:checked"))
-                            .map(el => el.value);
+                             .map(el => el.value);
 
       if (!name || !email || !phone || !location || interests.length === 0) {
         document.getElementById("msg").innerText = "Please complete all fields.";
@@ -64,16 +64,18 @@
         const result = await response.json();
 
         if (result.result === "success") {
-          document.getElementById("msg").innerText = "Registration successful!";
+          // Show the pop-up message
+          alert("Registration Successful!");
+
+          // Reset the form
           document.getElementById("registrationForm").reset();
         } else {
           document.getElementById("msg").innerText = "Error submitting form.";
         }
       } catch (err) {
-        document.getElementById("msg").innerText = "Connection error.";
+        document.getElementById("msg").innerText = "Error connecting to server.";
       }
     });
   </script>
 </body>
-  </html>
-  
+</html>
